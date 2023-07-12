@@ -135,3 +135,21 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+.config{
+}
+.config ul{
+  list-style: none;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.config ul li{
+  width: 50%;
+}
+
+.config input{
+  border-style: dashed;
+  border-radius: 5%;
+  border-color: lightgray;
+} 
