@@ -22,31 +22,9 @@ function checkConfig(){
     hasNumbers: true
   };
   result.length = document.querySelector("#pwLength").value * 1;
-  console.log(document.querySelector("#hasUpperCase").getAttribute("checked"));
-  if (document.getElementById("hasUpperCase").getAttribute("checked") === "true"){
-    result.hasUpperCase = true;
-  }
-  else{
-    result.hasUpperCase = false;
-  };
-  if (document.querySelector("#hasLowerCase").value == "on"){
-    result.hasLowerCase = true;
-  }
-  else{
-    result.hasLowerCase = false;
-  };
-  if (document.querySelector("#hasSpecialCharacters").value == "on"){
-    result.hasSpecialCharacters = true;
-  }
-  else{
-    result.hasSpecialCharacters = false;
-  };
-  if (document.querySelector("#hasNumbers").value == "on"){
-    result.hasNumbers = true;
-  }
-  else{
-    result.hasNumbers = false;
-  };
+  result.hasUpperCase = document.getElementById("hasUpperCase").checked;
+  result.hasSpecialCharacters = document.getElementById("hasSpecialCharacters").checked;
+  result.hasNumbers = document.getElementById("hasNumbers").checked;
   return result;
 };
 
@@ -58,7 +36,6 @@ var maxLength = 128;
 
 var Config = {
   length: 8,
-  hasLowerCase: true,
   hasUpperCase: true,
   hasSpecialCharacters: true,
   hasNumbers: true
@@ -70,7 +47,6 @@ var numbers = "0123456789";
 
 var generatePassword = function(config){
   var result = "";
-  console.log(config);
   for (let index = 0; index < config.length; index++) {
     var random = Math.random();
     var array = legalCharacters;
@@ -81,6 +57,9 @@ var generatePassword = function(config){
       array = numbers;
     }
     var char = array.charAt(Math.random() * array.length);
+    if(Math.random() > 0.5 && config.hasUpperCase === true){
+      char = char.toLocaleUpperCase();
+    }
     result += char;
   }
   return result;

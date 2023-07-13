@@ -137,6 +137,9 @@ button[disabled] {
 }
 
 .config{
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .config ul{
   list-style: none;
