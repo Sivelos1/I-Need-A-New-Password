@@ -13,7 +13,7 @@
 
 ## Installation
 
-Click on a URL leading to this web-page.
+Click on [this URL](https://sivelos1.github.io/I-Need-A-New-Password/) to visit the page.
 
 ## Usage
 
