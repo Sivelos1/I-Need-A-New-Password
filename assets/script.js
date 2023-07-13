@@ -41,25 +41,26 @@ var Config = {
   hasNumbers: true
 };
 
-var legalCharacters = "abcdefghijklmnopqrstuvwxyz";
-var specialCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialCharacters = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var numbers = "0123456789";
 
 var generatePassword = function(config){
   var result = "";
   for (let index = 0; index < config.length; index++) {
     var random = Math.random();
-    var array = legalCharacters;
-    if(Math.round(random * 2) == 1 && config.hasSpecialCharacters === true){
+    var array = lowerCase;
+    if(Math.round(random * 3) == 1 && config.hasUpperCase === true){
+      array = upperCase;
+    }
+    else if(Math.round(random * 3) == 2 && config.hasSpecialCharacters === true){
       array = specialCharacters;
     }
-    else if(Math.round(random * 2) == 2 && config.hasNumbers === true){
+    else if(Math.round(random * 3) == 3 && config.hasNumbers === true){
       array = numbers;
     }
     var char = array.charAt(Math.random() * array.length);
-    if(Math.random() > 0.5 && config.hasUpperCase === true){
-      char = char.toLocaleUpperCase();
-    }
     result += char;
   }
   return result;
